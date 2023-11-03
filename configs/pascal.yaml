@@ -1,0 +1,24 @@
+# arguments for dataset
+dataset: CHLandset8
+nclass: 2
+crop_size: 352
+data_root: /home/ljs/dataset
+
+# arguments for training
+epochs: 60
+batch_size: 4
+lr: 0.001  # 4GPUs
+lr_multi: 10.0
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: -100
+thresh_init: 0.85
+
+# arguments for model
+backbone: resnet50
+pretrain: True
+multi_grid: False
+replace_stride_with_dilation: [False, True, True]
+# dilations: [6, 12, 18]
+dilations: [12, 24, 36]
